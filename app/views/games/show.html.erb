@@ -30,6 +30,12 @@
   <%= @game.cost %>
 </p>
 
+<b>Players:</b>
+<ul>
+  <% @game.users.each do |u| %>
+    <li><%= u.login %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>

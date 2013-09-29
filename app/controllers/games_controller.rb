@@ -1,4 +1,17 @@
 class GamesController < ApplicationController
+
+  # GET /games/:id/play
+  def play
+    @game = Game.find(params[:id])
+    @game.make_it_happen
+
+    respond_to do |format|
+      if @game.save
+        format.html
+      end
+    end
+  end
+
   # GET /games
   # GET /games.json
   def index
@@ -41,6 +54,7 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.new(params[:game])
+    @game.users = User.where(id: params[:game][:players].split(/,/).map!(&:to_i))
 
     respond_to do |format|
       if @game.save

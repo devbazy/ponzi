@@ -2,8 +2,12 @@
 
 <table>
   <tr>
+    <th>Id</th>
     <th>Login</th>
     <th>Email</th>
+    <th>Amount</th>
+    <th>Daddr</th>
+    <th>Waddr</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,8 +15,20 @@
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= user.id %></td>
     <td><%= user.login %></td>
     <td><%= user.email %></td>
+
+    <% if !user.account.nil? %>
+      <td><%= user.account.amount %></td>
+      <td><%= user.account.daddr %></td>
+      <td><%= user.account.waddr %></td>
+    <% else %>
+      <td></td>
+      <td></td>
+      <td></td>
+    <% end %>
+
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>

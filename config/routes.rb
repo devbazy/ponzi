@@ -1,11 +1,13 @@
 Ponzi::Application.routes.draw do
   resources :old_games
 
-  resources :games
+  resources :games do
+    get 'play', on: :member
+  end
 
-  resources :accounts
-
-  resources :users
+  resources :users do
+    resources :accounts
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

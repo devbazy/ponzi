@@ -1,0 +1,19 @@
+Players: <%= @game.players_no %>
+Winners: <%= @game.winners_no %>
+Cost:	 <%= @game.cost %>
+
+<h1>Refresh page to play again</h1>
+
+<table>
+	<tr>
+		<th>Login</th>
+		<th>Money</th>
+	</tr>
+
+	<% @game.users.each do |user| %>
+		<tr>
+			<td><%= user.login %></td>
+			<td><%= user.account.amount %></td>
+		</tr>
+	<% end %>
+</table>

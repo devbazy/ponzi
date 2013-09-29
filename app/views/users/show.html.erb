@@ -10,6 +10,22 @@
   <%= @user.email %>
 </p>
 
+<% if !@user.account.nil? %>
+	<p>
+		<b>Amount:</b>
+		<%= @user.account.amount %>
+	</p>
+
+	<p>
+		<b>Daddr:</b>
+		<%= @user.account.daddr %>
+	</p>
+
+	<p>
+		<b>Waddr:</b>
+		<%= @user.account.waddr %>
+	</p>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
