@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Players no:</b>
+  <%= @game.players_no %>
+</p>
+
+<p>
+  <b>Winners no:</b>
+  <%= @game.winners_no %>
+</p>
+
+<p>
+  <b>Open:</b>
+  <%= @game.open %>
+</p>
+
+<p>
+  <b>Seed:</b>
+  <%= @game.seed %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @game.owner_id %>
+</p>
+
+<p>
+  <b>Cost:</b>
+  <%= @game.cost %>
+</p>
+
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

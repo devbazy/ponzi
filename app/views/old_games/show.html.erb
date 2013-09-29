@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Game:</b>
+  <%= @old_game.game_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_old_game_path(@old_game) %> |
+<%= link_to 'Back', old_games_path %>

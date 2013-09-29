@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Amount:</b>
+  <%= @account.amount %>
+</p>
+
+<p>
+  <b>Daddr:</b>
+  <%= @account.daddr %>
+</p>
+
+<p>
+  <b>Waddr:</b>
+  <%= @account.waddr %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @account.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
