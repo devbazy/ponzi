@@ -7,7 +7,7 @@ class Game < ActiveRecord::Base
 	attr_accessor :players, :random
 
 	def make_it_happen
-		fee = 0.005
+		fee = 0.015
 
 		if self.players_no == self.users.count
 			winners = self.users.shuffle[1..self.winners_no]
