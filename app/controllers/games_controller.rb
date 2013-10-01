@@ -54,6 +54,7 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.new(params[:game])
+
     @game.users = User.where(id: params[:game][:players].split(/,/).map!(&:to_i))
 
     respond_to do |format|

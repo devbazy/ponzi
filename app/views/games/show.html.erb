@@ -33,7 +33,7 @@
 <b>Players:</b>
 <ul>
   <% @game.users.each do |u| %>
-    <li><%= u.login %></li>
+    <li><%= u.login %> (<%= u.account.amount %>)</li>
   <% end %>
 </ul>
 
