@@ -40,6 +40,11 @@ GEM
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     hike (1.2.3)
     i18n (0.6.5)
     journey (1.0.4)
@@ -51,7 +56,10 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.1)
     mime-types (1.25)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
     multi_json (1.8.0)
     pg (0.17.0)
     polyglot (0.3.3)
@@ -91,6 +99,9 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    rspec-rails-mocha (0.3.2)
+      mocha (>= 0.9.8)
+      rspec-rails (>= 2.0.0)
     sass (3.2.11)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -116,10 +127,12 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  factory_girl_rails
   jquery-rails
   pg
   rails (= 3.2.0)
   rspec-rails
+  rspec-rails-mocha
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
