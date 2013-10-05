@@ -1,4 +1,7 @@
 class Game < ActiveRecord::Base
+	require 'my_random'
+	require 'fee'
+
 	has_many :associations
 	has_many :users, through: :associations
 	after_save :randomize
@@ -14,32 +17,23 @@ class Game < ActiveRecord::Base
 	validates :open, presence: true
 	validate :players_account_amount
 
-	# TEMP!
-	attr_accessor :players, :random, :zarobione
+	attr_accessor :players
 
-	def make_it_happen
-		fee = 0.001
-
+	def play
 		if self.players_no == self.users.count
-			winners = self.users.shuffle[1..self.winners_no]			
-			jackpot = (self.cost * (1-fee) * self.players_no) / self.winners_no
+			winners = MyRandom::get_random(self.players_no, self.winners_no)
+								.map { |i| self.users[i] }
 
-			Account.connection.execute("
-				UPDATE accounts
-				SET amount = amount - #{self.cost}
-				WHERE id IN (#{self.users.map(&:account).map(&:id).join(', ')})")
-
-			Account.connection.execute("
-				UPDATE accounts
-				SET amount = amount + #{jackpot}
-				WHERE id IN (#{winners.map(&:account).map(&:id).join(', ')})")
+			prize = (self.cost * (1-Fee::fee) * self.players_no) / self.winners_no
+			
+			Account.connection.execute("UPDATE accounts	SET amount = amount - #{self.cost} WHERE id IN (#{self.users.map(&:account).map(&:id).join(', ')})")
+			Account.connection.execute("UPDATE accounts SET amount = amount + #{prize} WHERE id IN (#{winners.map(&:account).map(&:id).join(', ')})")	
+		else
+			# !!!!! TO DO
 		end
 	end
 
 	private
-		def randomize
-			@random = Random.new(self.seed)
-		end
 
 		def players_account_amount
 			self.users.each do |user|
