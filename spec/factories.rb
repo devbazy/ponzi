@@ -14,11 +14,12 @@ FactoryGirl.define do
 		waddr	"1withdrawFVj8ALj6mfBsbifRoD4dupsko"
 	end
 
-	factory :game_4_1_23_01, class: Game do
+	factory :game_4_1_23_01_3, class: Game do
 		players_no	4
 		winners_no	1
 		open		true
 		seed		23
 		cost		0.1
+		rounds		3
 	end
 end

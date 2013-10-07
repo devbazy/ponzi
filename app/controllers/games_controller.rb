@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   # GET /games/:id/play
   def play
     @game = Game.find(params[:id])
-    @game.make_it_happen
+    @game.play_game
 
     respond_to do |format|
       if @game.save
